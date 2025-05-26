@@ -1,0 +1,77 @@
+version: '3.8'
+
+services:
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: calendar-conflict-optimizer
+    container_name: calendar-conflict-optimizer
+    ports:
+      - "8089:8089"
+    environment:
+      - SPRING_PROFILES_ACTIVE=docker
+      - DB_URL=jdbc:postgresql://db:5432/calendar-conflict-optimizer
+      - DB_USERNAME=postgres
+      - DB_PASSWORD=postgres
+      - KEYCLOAK_URL=http://keycloak:8080
+      - KEYCLOAK_REALM=calendar-realm
+      - KEYCLOAK_CLIENT_ID=calendar-client
+      - KEYCLOAK_CLIENT_SECRET=your-client-secret
+    depends_on:
+      - db
+      - redis
+      - keycloak
+    networks:
+      - calender-optimizer-network
+
+  db:
+    image: postgres:15-alpine
+    container_name: postgres-db
+    environment:
+      - POSTGRES_DB=calendar-conflict-optimizer
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=postgres
+    volumes:
+      - postgres-data:/var/lib/postgresql/data
+    ports:
+      - "5432:5432"
+    networks:
+      - calender-optimizer-network
+
+  redis:
+    image: redis:7-alpine
+    container_name: redis-cache
+    ports:
+      - "6379:6379"
+    volumes:
+      - redis-data:/data
+    networks:
+      - calender-optimizer-network
+
+  keycloak:
+    image: quay.io/keycloak/keycloak:22.0
+    container_name: keycloak
+    environment:
+      - KEYCLOAK_ADMIN=admin
+      - KEYCLOAK_ADMIN_PASSWORD=admin
+      - KC_DB=postgres
+      - KC_DB_URL=jdbc:postgresql://db:5432/calendar-conflict-optimizer
+      - KC_DB_USERNAME=postgres
+      - KC_DB_PASSWORD=postgres
+      - KC_HOSTNAME=localhost
+    ports:
+      - "8181:8081"
+    depends_on:
+      - db
+    networks:
+      - calender-optimizer-network
+    command: ["start-dev"]
+
+volumes:
+  postgres-data:
+  redis-data:
+
+networks:
+  calender-optimizer-network:
+    driver: bridge
