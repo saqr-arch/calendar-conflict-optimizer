@@ -25,6 +25,15 @@ spring:
             non_contextual_creation: true
     hibernate:
       ddl-auto: update
+
+  data:
+    elasticsearch:
+      cluster-nodes: localhost:9200
+      repositories:
+        enabled: true
+
+
+
   security:
     oauth2:
       resourceserver:
