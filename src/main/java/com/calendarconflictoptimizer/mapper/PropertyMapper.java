@@ -25,6 +25,8 @@ public interface PropertyMapper {
 	@Mapping(source = "amenities", target = "amenities", qualifiedByName = "listToString")
 	Property toEntity(PropertyDTO propertyDTO);
 
+
+
 	@Named("stringToList")
 	static List<String> stringToList(String amenities) {
 		return (amenities != null && !amenities.isEmpty())

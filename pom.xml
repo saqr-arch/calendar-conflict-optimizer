@@ -30,7 +30,7 @@
         <java.version>17</java.version>
         <mapstruct.version>1.5.5.Final</mapstruct.version>
         <mapstruct-processor.version>1.5.5.Final</mapstruct-processor.version>
-        <keycloak-spring-boot-starter.version>21.1.1</keycloak-spring-boot-starter.version>
+        <spring-boot-starter-keyclak.version>22.0.1</spring-boot-starter-keyclak.version>
     </properties>
     <dependencies>
 
@@ -45,14 +45,14 @@
             <artifactId>spring-data-commons</artifactId>
         </dependency>
 
-        <!--        <dependency>-->
-        <!--            <groupId>org.flywaydb</groupId>-->
-        <!--            <artifactId>flyway-core</artifactId>-->
-        <!--        </dependency>-->
-        <!--        <dependency>-->
-        <!--            <groupId>org.flywaydb</groupId>-->
-        <!--            <artifactId>flyway-database-postgresql</artifactId>-->
-        <!--        </dependency>-->
+        <dependency>
+            <groupId>org.flywaydb</groupId>
+            <artifactId>flyway-core</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.flywaydb</groupId>
+            <artifactId>flyway-database-postgresql</artifactId>
+        </dependency>
 
         <!-- Docker and Devtools -->
         <dependency>
@@ -68,6 +68,7 @@
             <optional>true</optional>
         </dependency>
 
+        <!-- Security Dependencies -->
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-security</artifactId>

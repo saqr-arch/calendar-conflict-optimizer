@@ -6,6 +6,8 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 @RestController
@@ -29,10 +31,17 @@ public class SecurityController {
 
 	@GetMapping("/whoami")
 	public Map<String, Object> whoAmI(@AuthenticationPrincipal Jwt jwt) {
-		return Map.of(
-				"username", jwt.getClaimAsString("preferred_username"),
-				"email", jwt.getClaimAsString("email"),
-				"roles", jwt.getClaim("realm_access")
-		);
+		Map<String, Object> userInfo = new HashMap<>();
+		userInfo.put("username", jwt.getClaimAsString("preferred_username"));
+		userInfo.put("email", jwt.getClaimAsString("email"));
+
+		Map<String, Object> realmAccess = jwt.getClaim("realm_access");
+		if (realmAccess != null && realmAccess.get("roles") instanceof List) {
+			userInfo.put("roles", realmAccess.get("roles"));
+		} else {
+			userInfo.put("roles", List.of());
+		}
+
+		return userInfo;
 	}
 }

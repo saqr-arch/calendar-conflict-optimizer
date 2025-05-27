@@ -1,4 +1,7 @@
-FROM ubuntu:latest
-LABEL authors="AlmaDev-03"
+FROM eclipse-temurin:17-jdk-alpine
+LABEL authors="AhmedHassanIbrahim"
 
-ENTRYPOINT ["top", "-b"]
+WORKDIR /app
+COPY target/calendar-conflict-optimizer-0.0.1-SNAPSHOT.jar app.jar
+
+ENTRYPOINT ["java", "-jar", "app.jar"]
