@@ -1,5 +1,0 @@
-spring:
-  application:
-    name: calendar-conflict-optimizer
-server:
-  port: 8089

@@ -1,23 +1,66 @@
 spring:
   application:
     name: calendar-conflict-optimizer
-server:
-  port: 8089
-
+  # Database Configuration
   datasource:
-    url: jdbc:postgresql://localhost:5433/calendar-conflict-optimizer
-    validationQuery: SELECT 1
+    url: jdbc:postgresql://db:5433/calendar-conflict-optimizer
     username: postgres
     password: postgres
     driver-class-name: org.postgresql.Driver
-    poolsize:
-      min: 1
-      max: 5
-
+    hikari:
+      connection-timeout: 30000
+      maximum-pool-size: 5
+      minimum-idle: 1
+      validation-timeout: 5000
+      leak-detection-threshold: 60000
+      initialization-fail-timeout: 1
+  # JPA/Hibernate Configuration - Change the DDL to 'update' to be work with Flyway
   jpa:
     show-sql: true
     properties:
       hibernate:
         format_sql: true
+        jdbc:
+          lob:
+            non_contextual_creation: true
     hibernate:
       ddl-auto: update
+
+server:
+  port: 8089
+
+
+# Flyway Configuration
+#  flyway:
+#    # Basic Configuration
+#    url: jdbc:postgresql://db:5433/calendar-conflict-optimizer  # Inherits from datasource
+#    user: postgres}
+#    password: postgres
+#
+#    # Migration Management
+#    locations: classpath:db/migration  # Where to find migration scripts
+#    sql-migration-prefix: V           # Versioned migrations prefix (V1__Create_table.sql)
+#    repeatable-sql-migration-prefix: R # Repeatable migrations prefix (R__Update_view.sql)
+#    sql-migration-separator: __       # Separator between version and description
+#    sql-migration-suffixes: .sql      # File extensions to look for
+#
+#    # Schema History Table
+#    baseline-on-migrate: true         # Auto-create schema history if missing
+#    baseline-version: 1.0             # Initial version marker
+#    baseline-description: "Initial Baseline"  # Optional description
+#
+#    # Safety Controls
+#    validate-on-migrate: true         # Validate checksums on startup
+#    out-of-order: false               # Require sequential migrations
+#    clean-disabled: true              # Prevent accidental schema wipes
+#    fail-on-missing-locations: true   # Fail if migration folder missing
+#
+#    # Performance
+#    connect-retries: 10               # Retry DB connections (for Docker)
+#    init-sql: "SET lock_timeout TO '5s'" # Prevent migration locks
+#
+#    # Advanced
+#    placeholders:
+#      tableprefix: cal_              # For dynamic SQL in migrations
+#    group: true                      # Group all pending migrations
+#    ignore-migration-patterns: "*:pending" # Ignore pending migrations
