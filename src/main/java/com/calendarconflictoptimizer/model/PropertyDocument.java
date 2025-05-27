@@ -15,5 +15,5 @@ public class PropertyDocument {
 	private String id;
 	private String title;
 	private String location;
-	private double price;
+	private String amenities;
 }
