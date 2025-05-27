@@ -24,7 +24,7 @@ public class SecurityConfig {
 						.requestMatchers("/api/owner/**").hasRole("owner")
 						.requestMatchers("/api/user/**").hasRole("user")
 						.requestMatchers("/api/whoami").authenticated()
-						.anyRequest().denyAll()
+						.anyRequest().permitAll()
 				)
 				.oauth2ResourceServer(oauth2 -> oauth2
 						.jwt(jwt -> jwt.jwtAuthenticationConverter(jwtAuthenticationConverter()))
