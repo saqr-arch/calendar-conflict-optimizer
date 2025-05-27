@@ -25,6 +25,12 @@ spring:
             non_contextual_creation: true
     hibernate:
       ddl-auto: update
+  security:
+    oauth2:
+      resourceserver:
+        jwt:
+          issuer-uri: http://localhost:8081/realms/calender-conflict-optimizer
+          jwk-set-uri: http://localhost:8081/realms/calender-conflict-optimizer/protocol/openid-connect/certs
 
 server:
   port: 8089
