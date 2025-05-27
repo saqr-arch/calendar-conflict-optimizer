@@ -3,9 +3,7 @@ package com.calendarconflictoptimizer.service.impl;
 import com.calendarconflictoptimizer.dto.request.PropertyDTO;
 import com.calendarconflictoptimizer.mapper.PropertyMapper;
 import com.calendarconflictoptimizer.model.Property;
-import com.calendarconflictoptimizer.model.PropertyDocument;
 import com.calendarconflictoptimizer.repository.PropertyRepository;
-import com.calendarconflictoptimizer.repository.PropertySearchRepository;
 import com.calendarconflictoptimizer.repository.UserRepository;
 import com.calendarconflictoptimizer.service.PropertyService;
 import jakarta.persistence.criteria.Predicate;
@@ -21,21 +19,19 @@ import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
-import java.util.stream.Collectors;
 
 @Service
 @RequiredArgsConstructor
 public class PropertyServiceImpl implements PropertyService {
 
 	private final PropertyRepository propertyRepository;
-	private final PropertySearchRepository esRepository;
 	private final UserRepository userRepository;
 
 	@Override
 	public List<PropertyDTO> getAllProperties() {
 		return propertyRepository.findAll().stream()
 				.map(PropertyMapper.INSTANCE::toDto)
-				.collect(Collectors.toList());
+				.toList();
 	}
 
 	@Override
@@ -95,25 +91,5 @@ public class PropertyServiceImpl implements PropertyService {
 
 		Page<Property> propertiesPage = propertyRepository.findAll(spec, pageable);
 		return PropertyMapper.INSTANCE.toDtoPage(propertiesPage);
-	}
-
-
-
-	/**
-	 * Elastic Search
-	 * */
-	public Property save(Property property) {
-		var saved = propertyRepository.save(property);
-
-		PropertyDocument doc = new PropertyDocument();
-		doc.setId(String.valueOf(saved.getId()));
-		doc.setTitle(saved.getTitle());
-		doc.setLocation(saved.getLocation());
-		esRepository.save(doc);
-		return saved;
-	}
-
-	public List<PropertyDocument> searchByLocation(String location) {
-		return esRepository.findByLocation(location);
 	}
 }
