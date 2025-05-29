@@ -1,0 +1,330 @@
+{
+	"info": {
+		"_postman_id": "e18c832b-7536-464a-b380-50bf4e00fcc8",
+		"name": "Calender",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "17082431"
+	},
+	"item": [
+		{
+			"name": "Properties",
+			"item": [
+				{
+					"name": "Properties - create",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJSUzI1NiIsInR5cCIgOiAiSldUIiwia2lkIiA6ICJtc3VBVWo4T0JrbVRWcmxKRnhmQUU4cFI4akpOODZ3TzF0TUNTTXg0ZEtnIn0.eyJleHAiOjE3NDgzODE0NjgsImlhdCI6MTc0ODM4MTE2OCwianRpIjoiZGJhNDU2ZGYtNjJlNi00NzUyLWIzZDMtYzBiMTBiMjcwZmUzIiwiaXNzIjoiaHR0cDovL2xvY2FsaG9zdDo4MDgxL3JlYWxtcy9wcm9wZXJ0eS1yZW50YWwiLCJhdWQiOiJhY2NvdW50Iiwic3ViIjoiMGI0N2ExMDctNGYwYy00NDdlLTg1NmItNDVjNTA5NjdlMGE4IiwidHlwIjoiQmVhcmVyIiwiYXpwIjoicHJvcGVydHktYXBwIiwic2Vzc2lvbl9zdGF0ZSI6IjQ1M2RhYzhhLTRlMGMtNDgzZS04YzYwLWJmM2U1MjVjZWZmOCIsImFjciI6IjEiLCJyZWFsbV9hY2Nlc3MiOnsicm9sZXMiOlsib3duZXIiLCJkZWZhdWx0LXJvbGVzLXByb3BlcnR5LXJlbnRhbCIsIm9mZmxpbmVfYWNjZXNzIiwiYWRtaW4iLCJ1bWFfYXV0aG9yaXphdGlvbiIsInVzZXIiXX0sInJlc291cmNlX2FjY2VzcyI6eyJhY2NvdW50Ijp7InJvbGVzIjpbIm1hbmFnZS1hY2NvdW50IiwibWFuYWdlLWFjY291bnQtbGlua3MiLCJ2aWV3LXByb2ZpbGUiXX19LCJzY29wZSI6InByb2ZpbGUgZW1haWwiLCJzaWQiOiI0NTNkYWM4YS00ZTBjLTQ4M2UtOGM2MC1iZjNlNTI1Y2VmZjgiLCJlbWFpbF92ZXJpZmllZCI6ZmFsc2UsIm5hbWUiOiJBaG1lZCBIYXNzYW4iLCJwcmVmZXJyZWRfdXNlcm5hbWUiOiJhaG1lZCIsImdpdmVuX25hbWUiOiJBaG1lZCIsImZhbWlseV9uYW1lIjoiSGFzc2FuIn0.NU92_t04uZR5rwGiHnE916Ee26nY4IlyysYH49GNeWj_-iMlA-npa1cd1aoZ9nHRWjAR2-hLUrGvWoH3jqQr9jSJ27RWDDhStKHKWvwsIeGST2DqdZzSJHCdh5p7TPMdyqJEeQoXKVDbz611O06ekxjLcPs1Efzho9RB-ROf0jV-uAzjsdC9EmZiyOVq-GeIVV2ZqnKZM8lqm5F4JqbejnrmPH6CX3-E7nkFoZ6l6hcGz8j3HeAcJmnfBkl_A6_lkreDvrtM6WlQ0hIx9uNYFoCH_5DNH-WmFdfJIIveI1LGXjeHPrlFmlKgJ2Lt9mM_uzz4bG5yHVpD3fAfPf8trg",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"title\": \"Expo Event\",\r\n    \"ownerId\": 1,\r\n    \"location\": \"AinShams, Cairo\",\r\n    \"amenities\": [\"Pool\", \"Ocean View\", \"Gym\", \"WiFi\"]\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8089/api/properties",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8089",
+							"path": [
+								"api",
+								"properties"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get All Properties",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8089/api/properties",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8089",
+							"path": [
+								"api",
+								"properties"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Properties - Search",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8089/api/properties/search?amenities=pool",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8089",
+							"path": [
+								"api",
+								"properties",
+								"search"
+							],
+							"query": [
+								{
+									"key": "amenities",
+									"value": "pool"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Search",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"query\": {\r\n    \"match_all\": {}\r\n  }\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:9200/property-index/_search",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "9200",
+							"path": [
+								"property-index",
+								"_search"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Analyzer",
+			"item": [
+				{
+					"name": "analyze",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJSUzI1NiIsInR5cCIgOiAiSldUIiwia2lkIiA6ICJtc3VBVWo4T0JrbVRWcmxKRnhmQUU4cFI4akpOODZ3TzF0TUNTTXg0ZEtnIn0.eyJleHAiOjE3NDgzODE0NjgsImlhdCI6MTc0ODM4MTE2OCwianRpIjoiZGJhNDU2ZGYtNjJlNi00NzUyLWIzZDMtYzBiMTBiMjcwZmUzIiwiaXNzIjoiaHR0cDovL2xvY2FsaG9zdDo4MDgxL3JlYWxtcy9wcm9wZXJ0eS1yZW50YWwiLCJhdWQiOiJhY2NvdW50Iiwic3ViIjoiMGI0N2ExMDctNGYwYy00NDdlLTg1NmItNDVjNTA5NjdlMGE4IiwidHlwIjoiQmVhcmVyIiwiYXpwIjoicHJvcGVydHktYXBwIiwic2Vzc2lvbl9zdGF0ZSI6IjQ1M2RhYzhhLTRlMGMtNDgzZS04YzYwLWJmM2U1MjVjZWZmOCIsImFjciI6IjEiLCJyZWFsbV9hY2Nlc3MiOnsicm9sZXMiOlsib3duZXIiLCJkZWZhdWx0LXJvbGVzLXByb3BlcnR5LXJlbnRhbCIsIm9mZmxpbmVfYWNjZXNzIiwiYWRtaW4iLCJ1bWFfYXV0aG9yaXphdGlvbiIsInVzZXIiXX0sInJlc291cmNlX2FjY2VzcyI6eyJhY2NvdW50Ijp7InJvbGVzIjpbIm1hbmFnZS1hY2NvdW50IiwibWFuYWdlLWFjY291bnQtbGlua3MiLCJ2aWV3LXByb2ZpbGUiXX19LCJzY29wZSI6InByb2ZpbGUgZW1haWwiLCJzaWQiOiI0NTNkYWM4YS00ZTBjLTQ4M2UtOGM2MC1iZjNlNTI1Y2VmZjgiLCJlbWFpbF92ZXJpZmllZCI6ZmFsc2UsIm5hbWUiOiJBaG1lZCBIYXNzYW4iLCJwcmVmZXJyZWRfdXNlcm5hbWUiOiJhaG1lZCIsImdpdmVuX25hbWUiOiJBaG1lZCIsImZhbWlseV9uYW1lIjoiSGFzc2FuIn0.NU92_t04uZR5rwGiHnE916Ee26nY4IlyysYH49GNeWj_-iMlA-npa1cd1aoZ9nHRWjAR2-hLUrGvWoH3jqQr9jSJ27RWDDhStKHKWvwsIeGST2DqdZzSJHCdh5p7TPMdyqJEeQoXKVDbz611O06ekxjLcPs1Efzho9RB-ROf0jV-uAzjsdC9EmZiyOVq-GeIVV2ZqnKZM8lqm5F4JqbejnrmPH6CX3-E7nkFoZ6l6hcGz8j3HeAcJmnfBkl_A6_lkreDvrtM6WlQ0hIx9uNYFoCH_5DNH-WmFdfJIIveI1LGXjeHPrlFmlKgJ2Lt9mM_uzz4bG5yHVpD3fAfPf8trg",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n\"workingHours\": {\r\n\"start\": \"09:00\",\r\n\"end\": \"17:00\"\r\n},\r\n\"timeZone\": \"Asia/Riyadh\",\r\n\"events\": [\r\n{\r\n\"title\": \"Team Standup\",\r\n\"startTime\": \"2025-05-14T09:30:00+03:00\",\r\n\"endTime\": \"2025-05-14T10:00:00+03:00\"\r\n},\r\n{\r\n\"title\": \"Client Meeting\",\r\n\"startTime\": \"2025-05-14T10:00:00+03:00\",\r\n\"endTime\": \"2025-05-14T11:00:00+03:00\"\r\n},\r\n{\r\n\"title\": \"1:1 Review\",\r\n\"startTime\": \"2025-05-14T10:30:00+03:00\",\r\n\"endTime\": \"2025-05-14T11:30:00+03:00\"\r\n},\r\n{\r\n\"title\": \"Lunch Break\",\r\n\"startTime\": \"2025-05-14T13:00:00+03:00\",\r\n\"endTime\": \"2025-05-14T14:00:00+03:00\"\r\n}\r\n]\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8089/api/schedule/analyze",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8089",
+							"path": [
+								"api",
+								"schedule",
+								"analyze"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Booking",
+			"item": [
+				{
+					"name": "Booking - Find All",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8089/api/bookings",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8089",
+							"path": [
+								"api",
+								"bookings"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Booking - Create",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"propertyId\": 2,\r\n  \"userId\": 1,\r\n  \"startDate\": \"2025-05-27\",\r\n  \"endDate\": \"2025-05-27\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8089/api/bookings",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8089",
+							"path": [
+								"api",
+								"bookings"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Security",
+			"item": [
+				{
+					"name": "WhoIam",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJSUzI1NiIsInR5cCIgOiAiSldUIiwia2lkIiA6ICJtc3VBVWo4T0JrbVRWcmxKRnhmQUU4cFI4akpOODZ3TzF0TUNTTXg0ZEtnIn0.eyJleHAiOjE3NDgzODMwMjQsImlhdCI6MTc0ODM4MjcyNCwianRpIjoiYTVkZWQwYWQtMDY3YS00ZjM1LWFmZTUtMjdiMTg3M2ExODY5IiwiaXNzIjoiaHR0cDovL2xvY2FsaG9zdDo4MDgxL3JlYWxtcy9wcm9wZXJ0eS1yZW50YWwiLCJhdWQiOiJhY2NvdW50Iiwic3ViIjoiMGI0N2ExMDctNGYwYy00NDdlLTg1NmItNDVjNTA5NjdlMGE4IiwidHlwIjoiQmVhcmVyIiwiYXpwIjoicHJvcGVydHktYXBwIiwic2Vzc2lvbl9zdGF0ZSI6ImVmZWE0MmY4LWU1YWYtNGUxYS1iYmQ5LWZmOTNhMTkxOWI0MSIsImFjciI6IjEiLCJyZWFsbV9hY2Nlc3MiOnsicm9sZXMiOlsib3duZXIiLCJkZWZhdWx0LXJvbGVzLXByb3BlcnR5LXJlbnRhbCIsIm9mZmxpbmVfYWNjZXNzIiwiYWRtaW4iLCJ1bWFfYXV0aG9yaXphdGlvbiIsInVzZXIiXX0sInJlc291cmNlX2FjY2VzcyI6eyJhY2NvdW50Ijp7InJvbGVzIjpbIm1hbmFnZS1hY2NvdW50IiwibWFuYWdlLWFjY291bnQtbGlua3MiLCJ2aWV3LXByb2ZpbGUiXX19LCJzY29wZSI6InByb2ZpbGUgZW1haWwiLCJzaWQiOiJlZmVhNDJmOC1lNWFmLTRlMWEtYmJkOS1mZjkzYTE5MTliNDEiLCJlbWFpbF92ZXJpZmllZCI6ZmFsc2UsIm5hbWUiOiJBaG1lZCBIYXNzYW4iLCJwcmVmZXJyZWRfdXNlcm5hbWUiOiJhaG1lZCIsImdpdmVuX25hbWUiOiJBaG1lZCIsImZhbWlseV9uYW1lIjoiSGFzc2FuIn0.dVGhE7I6fYCQ4fL_hXdmxb0g2aiN2yUPDNdUki4rO_8rw2oR99zXxoTGqV6arzni_rV6E7YpnMw4Q25m-8JkYwHbe9QqpeGakg9DL_9GAeNvj5TWCJHJDt-D4QZdltY4GexEC_X7re5nK66Ev4p49a8TysoCojgXdB8pCFy8f-iBLP8zKHxuCqU3i_Kw2npt7iKlMMsxTltNWW9714JwAtLv3kYUcutReK_wYzUEvuEX8TDXBqRgc3DRxjucQKVePRihBx-6Tgdv13UOEgNxNBTmVUog-wWeUYTnloZo34PYioYD2RL5zCz6dpDkddznHJCHUazZWhGH4IHnMlnE2A",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://localhost:8089/api/whoami",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8089",
+							"path": [
+								"api",
+								"whoami"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Token",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/x-www-form-urlencoded"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "username",
+									"value": "ahmed",
+									"type": "text"
+								},
+								{
+									"key": "password",
+									"value": "admin",
+									"type": "text"
+								},
+								{
+									"key": "grant_type",
+									"value": "password",
+									"type": "text"
+								},
+								{
+									"key": "client_id",
+									"value": "property-app",
+									"type": "text"
+								},
+								{
+									"key": "client_secret",
+									"value": "R87X9tRk8zh6drHr9d8FO2YwI8bPfOnN",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://localhost:8081/realms/property-rental/protocol/openid-connect/token",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8081",
+							"path": [
+								"realms",
+								"property-rental",
+								"protocol",
+								"openid-connect",
+								"token"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
