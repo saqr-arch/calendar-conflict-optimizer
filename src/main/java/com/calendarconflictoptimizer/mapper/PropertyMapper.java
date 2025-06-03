@@ -23,6 +23,7 @@ public interface PropertyMapper {
 
 	@Mapping(source = "ownerId", target = "owner.id")
 	@Mapping(source = "amenities", target = "amenities", qualifiedByName = "listToString")
+	@Mapping(target = "bookings", ignore = true)
 	Property toEntity(PropertyDTO propertyDTO);
 
 
