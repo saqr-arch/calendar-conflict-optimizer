@@ -59,9 +59,11 @@ public class TestcontainersConfiguration {
 				.withEnv("KC_DB_USERNAME", "postgres")
 				.withEnv("KC_DB_PASSWORD", "postgres")
 				.withCommand("start-dev")
+				.waitingFor(Wait.forHttp("/realms/master")
+						.forStatusCodeMatching(code -> code == 200 || code == 404)  // Accept 404 if realm not created yet
+						.withStartupTimeout(Duration.ofSeconds(60)))
 				.withReuse(true);
 
-		keycloakContainer.start();
 	}
 
 	@BeforeAll
@@ -75,7 +77,7 @@ public class TestcontainersConfiguration {
 
 		System.setProperty("ELASTICSEARCH_HOST", "http://" + elasticsearchContainer.getHost() + ":" + elasticsearchContainer.getMappedPort(9200));
 
-		System.setProperty("KEYCLOAK_URL", "http://" + keycloakContainer.getHost() + ":" + keycloakContainer.getMappedPort(8081));
+		System.setProperty("KEYCLOAK_URL", "http://" + keycloakContainer.getHost() + ":" + 8081);
 		System.setProperty("KEYCLOAK_REALM", "property-rental");
 		System.setProperty("KEYCLOAK_CLIENT_ID", "property-app");
 		System.setProperty("KEYCLOAK_CLIENT_SECRET", "R87X9tRk8zh6drHr9d8FO2YwI8bPfOnN");

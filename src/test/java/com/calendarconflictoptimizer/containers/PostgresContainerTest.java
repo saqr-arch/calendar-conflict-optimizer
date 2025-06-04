@@ -77,6 +77,7 @@ class PostgresContainerTest extends TestcontainersConfiguration {
 
 		URL url = new URL(keycloakUrl + "/realms/master");
 		HttpURLConnection connection = (HttpURLConnection) url.openConnection();
+		System.out.println("Testing Keycloak URL: " + keycloakUrl);
 		connection.setRequestMethod("GET");
 		connection.setConnectTimeout(5000);
 		connection.setReadTimeout(5000);
