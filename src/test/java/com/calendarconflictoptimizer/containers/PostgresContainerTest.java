@@ -1,16 +1,21 @@
 package com.calendarconflictoptimizer.containers;
 
 import com.calendarconflictoptimizer.TestcontainersConfiguration;
+import static org.junit.jupiter.api.Assertions.*;
 import org.junit.jupiter.api.Test;
+
+import java.io.IOException;
+import java.net.HttpURLConnection;
+import java.net.Socket;
+import java.net.URL;
 import java.sql.Connection;
 import java.sql.DatabaseMetaData;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.Statement;
 
-import static org.junit.jupiter.api.Assertions.*;
 
- class PostgresContainerTest extends TestcontainersConfiguration {
+class PostgresContainerTest extends TestcontainersConfiguration {
 
 	@Test
 	void testConnection() throws Exception {
@@ -37,6 +42,47 @@ import static org.junit.jupiter.api.Assertions.*;
 			System.err.println("Database connection test failed: " + ex.getMessage());
 			throw ex;
 		}
+	}
+
+
+	@Test
+	void testRedisConnection() throws Exception {
+		String host = redisContainer.getHost();
+		int port = redisContainer.getMappedPort(6379);
+
+		try (Socket socket = new Socket(host, port)) {
+			assertTrue(socket.isConnected(), "Redis should be reachable");
+		}
+	}
+
+	@Test
+	void testElasticsearchConnection() throws Exception {
+		String esUrl = System.getProperty("ELASTICSEARCH_HOST");
+		assertNotNull(esUrl, "Elasticsearch URL should be set");
+
+		URL url = new URL(esUrl);
+		HttpURLConnection connection = (HttpURLConnection) url.openConnection();
+		connection.setRequestMethod("GET");
+		connection.setConnectTimeout(5000);
+		connection.setReadTimeout(5000);
+
+		int responseCode = connection.getResponseCode();
+		assertTrue(responseCode == 200 || responseCode == 401, "Elasticsearch should respond (HTTP 200 or 401), got: " + responseCode);
+	}
+
+	@Test
+	void testKeycloakConnection() throws IOException {
+		String keycloakUrl = System.getProperty("KEYCLOAK_URL");
+		assertNotNull(keycloakUrl, "Keycloak URL should be set");
+
+		URL url = new URL(keycloakUrl + "/realms/master");
+		HttpURLConnection connection = (HttpURLConnection) url.openConnection();
+		connection.setRequestMethod("GET");
+		connection.setConnectTimeout(5000);
+		connection.setReadTimeout(5000);
+
+		int responseCode = connection.getResponseCode();
+		assertTrue(responseCode == 200 || responseCode == 404, "Keycloak should be reachable, got: " + responseCode);
 	}
 }
 
