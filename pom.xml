@@ -32,6 +32,25 @@
         <mapstruct-processor.version>1.5.5.Final</mapstruct-processor.version>
         <spring-boot-starter-keyclak.version>22.0.1</spring-boot-starter-keyclak.version>
     </properties>
+
+    <profiles>
+        <profile>
+            <id>local</id>
+            <properties>
+                <activatedProperties>local</activatedProperties>
+            </properties>
+            <activation>
+                <activeByDefault>true</activeByDefault>
+            </activation>
+        </profile>
+        <profile>
+            <id>dev</id>
+            <properties>
+                <activatedProperties>dev</activatedProperties>
+            </properties>
+        </profile>
+    </profiles>
+
     <dependencies>
 
         <!-- Restful Dependency -->
