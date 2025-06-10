@@ -16,7 +16,7 @@
 						"header": [
 							{
 								"key": "Authorization",
-								"value": "Bearer eyJhbGciOiJSUzI1NiIsInR5cCIgOiAiSldUIiwia2lkIiA6ICJtc3VBVWo4T0JrbVRWcmxKRnhmQUU4cFI4akpOODZ3TzF0TUNTTXg0ZEtnIn0.eyJleHAiOjE3NDgzODE0NjgsImlhdCI6MTc0ODM4MTE2OCwianRpIjoiZGJhNDU2ZGYtNjJlNi00NzUyLWIzZDMtYzBiMTBiMjcwZmUzIiwiaXNzIjoiaHR0cDovL2xvY2FsaG9zdDo4MDgxL3JlYWxtcy9wcm9wZXJ0eS1yZW50YWwiLCJhdWQiOiJhY2NvdW50Iiwic3ViIjoiMGI0N2ExMDctNGYwYy00NDdlLTg1NmItNDVjNTA5NjdlMGE4IiwidHlwIjoiQmVhcmVyIiwiYXpwIjoicHJvcGVydHktYXBwIiwic2Vzc2lvbl9zdGF0ZSI6IjQ1M2RhYzhhLTRlMGMtNDgzZS04YzYwLWJmM2U1MjVjZWZmOCIsImFjciI6IjEiLCJyZWFsbV9hY2Nlc3MiOnsicm9sZXMiOlsib3duZXIiLCJkZWZhdWx0LXJvbGVzLXByb3BlcnR5LXJlbnRhbCIsIm9mZmxpbmVfYWNjZXNzIiwiYWRtaW4iLCJ1bWFfYXV0aG9yaXphdGlvbiIsInVzZXIiXX0sInJlc291cmNlX2FjY2VzcyI6eyJhY2NvdW50Ijp7InJvbGVzIjpbIm1hbmFnZS1hY2NvdW50IiwibWFuYWdlLWFjY291bnQtbGlua3MiLCJ2aWV3LXByb2ZpbGUiXX19LCJzY29wZSI6InByb2ZpbGUgZW1haWwiLCJzaWQiOiI0NTNkYWM4YS00ZTBjLTQ4M2UtOGM2MC1iZjNlNTI1Y2VmZjgiLCJlbWFpbF92ZXJpZmllZCI6ZmFsc2UsIm5hbWUiOiJBaG1lZCBIYXNzYW4iLCJwcmVmZXJyZWRfdXNlcm5hbWUiOiJhaG1lZCIsImdpdmVuX25hbWUiOiJBaG1lZCIsImZhbWlseV9uYW1lIjoiSGFzc2FuIn0.NU92_t04uZR5rwGiHnE916Ee26nY4IlyysYH49GNeWj_-iMlA-npa1cd1aoZ9nHRWjAR2-hLUrGvWoH3jqQr9jSJ27RWDDhStKHKWvwsIeGST2DqdZzSJHCdh5p7TPMdyqJEeQoXKVDbz611O06ekxjLcPs1Efzho9RB-ROf0jV-uAzjsdC9EmZiyOVq-GeIVV2ZqnKZM8lqm5F4JqbejnrmPH6CX3-E7nkFoZ6l6hcGz8j3HeAcJmnfBkl_A6_lkreDvrtM6WlQ0hIx9uNYFoCH_5DNH-WmFdfJIIveI1LGXjeHPrlFmlKgJ2Lt9mM_uzz4bG5yHVpD3fAfPf8trg",
+								"value": "Bearer {{auth-token}}",
 								"type": "text"
 							}
 						],
@@ -48,7 +48,13 @@
 					"name": "Get All Properties",
 					"request": {
 						"method": "GET",
-						"header": [],
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{auth-token}}",
+								"type": "text"
+							}
+						],
 						"url": {
 							"raw": "http://localhost:8089/api/properties",
 							"protocol": "http",
@@ -68,7 +74,13 @@
 					"name": "Properties - Search",
 					"request": {
 						"method": "GET",
-						"header": [],
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{auth-token}}",
+								"type": "text"
+							}
+						],
 						"url": {
 							"raw": "http://localhost:8089/api/properties/search?amenities=pool",
 							"protocol": "http",
@@ -102,6 +114,11 @@
 							{
 								"key": "Content-Type",
 								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer {{auth-token}}",
+								"type": "text"
 							}
 						],
 						"body": {
@@ -140,7 +157,7 @@
 						"header": [
 							{
 								"key": "Authorization",
-								"value": "Bearer eyJhbGciOiJSUzI1NiIsInR5cCIgOiAiSldUIiwia2lkIiA6ICJtc3VBVWo4T0JrbVRWcmxKRnhmQUU4cFI4akpOODZ3TzF0TUNTTXg0ZEtnIn0.eyJleHAiOjE3NDgzODE0NjgsImlhdCI6MTc0ODM4MTE2OCwianRpIjoiZGJhNDU2ZGYtNjJlNi00NzUyLWIzZDMtYzBiMTBiMjcwZmUzIiwiaXNzIjoiaHR0cDovL2xvY2FsaG9zdDo4MDgxL3JlYWxtcy9wcm9wZXJ0eS1yZW50YWwiLCJhdWQiOiJhY2NvdW50Iiwic3ViIjoiMGI0N2ExMDctNGYwYy00NDdlLTg1NmItNDVjNTA5NjdlMGE4IiwidHlwIjoiQmVhcmVyIiwiYXpwIjoicHJvcGVydHktYXBwIiwic2Vzc2lvbl9zdGF0ZSI6IjQ1M2RhYzhhLTRlMGMtNDgzZS04YzYwLWJmM2U1MjVjZWZmOCIsImFjciI6IjEiLCJyZWFsbV9hY2Nlc3MiOnsicm9sZXMiOlsib3duZXIiLCJkZWZhdWx0LXJvbGVzLXByb3BlcnR5LXJlbnRhbCIsIm9mZmxpbmVfYWNjZXNzIiwiYWRtaW4iLCJ1bWFfYXV0aG9yaXphdGlvbiIsInVzZXIiXX0sInJlc291cmNlX2FjY2VzcyI6eyJhY2NvdW50Ijp7InJvbGVzIjpbIm1hbmFnZS1hY2NvdW50IiwibWFuYWdlLWFjY291bnQtbGlua3MiLCJ2aWV3LXByb2ZpbGUiXX19LCJzY29wZSI6InByb2ZpbGUgZW1haWwiLCJzaWQiOiI0NTNkYWM4YS00ZTBjLTQ4M2UtOGM2MC1iZjNlNTI1Y2VmZjgiLCJlbWFpbF92ZXJpZmllZCI6ZmFsc2UsIm5hbWUiOiJBaG1lZCBIYXNzYW4iLCJwcmVmZXJyZWRfdXNlcm5hbWUiOiJhaG1lZCIsImdpdmVuX25hbWUiOiJBaG1lZCIsImZhbWlseV9uYW1lIjoiSGFzc2FuIn0.NU92_t04uZR5rwGiHnE916Ee26nY4IlyysYH49GNeWj_-iMlA-npa1cd1aoZ9nHRWjAR2-hLUrGvWoH3jqQr9jSJ27RWDDhStKHKWvwsIeGST2DqdZzSJHCdh5p7TPMdyqJEeQoXKVDbz611O06ekxjLcPs1Efzho9RB-ROf0jV-uAzjsdC9EmZiyOVq-GeIVV2ZqnKZM8lqm5F4JqbejnrmPH6CX3-E7nkFoZ6l6hcGz8j3HeAcJmnfBkl_A6_lkreDvrtM6WlQ0hIx9uNYFoCH_5DNH-WmFdfJIIveI1LGXjeHPrlFmlKgJ2Lt9mM_uzz4bG5yHVpD3fAfPf8trg",
+								"value": "Bearer {{auth-token}}",
 								"type": "text"
 							}
 						],
@@ -181,7 +198,13 @@
 					},
 					"request": {
 						"method": "GET",
-						"header": [],
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{auth-token}}",
+								"type": "text"
+							}
+						],
 						"body": {
 							"mode": "raw",
 							"raw": "",
@@ -210,7 +233,13 @@
 					"name": "Booking - Create",
 					"request": {
 						"method": "POST",
-						"header": [],
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{auth-token}}",
+								"type": "text"
+							}
+						],
 						"body": {
 							"mode": "raw",
 							"raw": "{\r\n  \"propertyId\": 2,\r\n  \"userId\": 1,\r\n  \"startDate\": \"2025-05-27\",\r\n  \"endDate\": \"2025-05-27\"\r\n}",
@@ -247,7 +276,7 @@
 						"header": [
 							{
 								"key": "Authorization",
-								"value": "Bearer eyJhbGciOiJSUzI1NiIsInR5cCIgOiAiSldUIiwia2lkIiA6ICJtc3VBVWo4T0JrbVRWcmxKRnhmQUU4cFI4akpOODZ3TzF0TUNTTXg0ZEtnIn0.eyJleHAiOjE3NDgzODMwMjQsImlhdCI6MTc0ODM4MjcyNCwianRpIjoiYTVkZWQwYWQtMDY3YS00ZjM1LWFmZTUtMjdiMTg3M2ExODY5IiwiaXNzIjoiaHR0cDovL2xvY2FsaG9zdDo4MDgxL3JlYWxtcy9wcm9wZXJ0eS1yZW50YWwiLCJhdWQiOiJhY2NvdW50Iiwic3ViIjoiMGI0N2ExMDctNGYwYy00NDdlLTg1NmItNDVjNTA5NjdlMGE4IiwidHlwIjoiQmVhcmVyIiwiYXpwIjoicHJvcGVydHktYXBwIiwic2Vzc2lvbl9zdGF0ZSI6ImVmZWE0MmY4LWU1YWYtNGUxYS1iYmQ5LWZmOTNhMTkxOWI0MSIsImFjciI6IjEiLCJyZWFsbV9hY2Nlc3MiOnsicm9sZXMiOlsib3duZXIiLCJkZWZhdWx0LXJvbGVzLXByb3BlcnR5LXJlbnRhbCIsIm9mZmxpbmVfYWNjZXNzIiwiYWRtaW4iLCJ1bWFfYXV0aG9yaXphdGlvbiIsInVzZXIiXX0sInJlc291cmNlX2FjY2VzcyI6eyJhY2NvdW50Ijp7InJvbGVzIjpbIm1hbmFnZS1hY2NvdW50IiwibWFuYWdlLWFjY291bnQtbGlua3MiLCJ2aWV3LXByb2ZpbGUiXX19LCJzY29wZSI6InByb2ZpbGUgZW1haWwiLCJzaWQiOiJlZmVhNDJmOC1lNWFmLTRlMWEtYmJkOS1mZjkzYTE5MTliNDEiLCJlbWFpbF92ZXJpZmllZCI6ZmFsc2UsIm5hbWUiOiJBaG1lZCBIYXNzYW4iLCJwcmVmZXJyZWRfdXNlcm5hbWUiOiJhaG1lZCIsImdpdmVuX25hbWUiOiJBaG1lZCIsImZhbWlseV9uYW1lIjoiSGFzc2FuIn0.dVGhE7I6fYCQ4fL_hXdmxb0g2aiN2yUPDNdUki4rO_8rw2oR99zXxoTGqV6arzni_rV6E7YpnMw4Q25m-8JkYwHbe9QqpeGakg9DL_9GAeNvj5TWCJHJDt-D4QZdltY4GexEC_X7re5nK66Ev4p49a8TysoCojgXdB8pCFy8f-iBLP8zKHxuCqU3i_Kw2npt7iKlMMsxTltNWW9714JwAtLv3kYUcutReK_wYzUEvuEX8TDXBqRgc3DRxjucQKVePRihBx-6Tgdv13UOEgNxNBTmVUog-wWeUYTnloZo34PYioYD2RL5zCz6dpDkddznHJCHUazZWhGH4IHnMlnE2A",
+								"value": "Bearer {{auth-token}}",
 								"type": "text"
 							}
 						],
@@ -325,6 +354,28 @@
 					"response": []
 				}
 			]
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
 		}
 	]
 }
